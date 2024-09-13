@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/Skills.css';
 
 function Skills() {
   const skills = ['JavaScript', 'React', 'Angular', 'Node.js', 'CSS', 'HTML'];
@@ -6,9 +7,13 @@ function Skills() {
   return (
     <section>
       <h2>Skills</h2>
-      <ul>
-        {skills.map(skill => <li key={skill}>{skill}</li>)}
-      </ul>
+      <div className="skills-grid">
+        {skills.map(skill => (
+          <div className="skill-card" key={skill}>
+            <p>{skill}</p>
+          </div>
+        ))}
+      </div>
     </section>
   );
 }
