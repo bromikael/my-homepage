@@ -1,6 +1,7 @@
-.site-header {
+/* Site header container */
+.header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Title on the left, login on the right */
   align-items: center;
   padding: 10px 20px;
   background-color: #333;
@@ -10,15 +11,35 @@
   z-index: 1000;
 }
 
+/* Logo (title) styling */
 .logo h1 {
   margin: 0;
+  font-size: 24px;
 }
 
+/* Login section container */
 .login {
   display: flex;
-  align-items: center;
+  justify-content: flex-end; /* Pushes the login section to the right */
+  align-items: center; /* Vertically aligns the inputs and buttons */
 }
 
+/* Styling for text (span) in the login section */
+.login span {
+  margin-right: 20px;
+  font-weight: bold;
+}
+
+/* Styling for form inputs */
+.login input {
+  margin-right: 10px; /* Space between input fields */
+  padding: 5px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* Button styles for the login and register buttons */
 .login-btn {
   background-color: #61dafb;
   color: #333;
@@ -27,13 +48,16 @@
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin-left: 10px; /* Space between the buttons */
 }
 
 .login-btn:hover {
   background-color: #21a1f1;
 }
 
-.login span {
-  margin-right: 20px;
-  font-weight: bold;
+/* Error message styling */
+.error {
+  color: red;
+  margin-left: 20px;
 }
+

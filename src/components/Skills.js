@@ -2,7 +2,7 @@ import React from 'react';
 import '../styles/Skills.css';
 
 function Skills() {
-  const skills = ['JavaScript', 'React', 'Angular', 'Node.js', 'CSS', 'HTML'];
+  const skills = ['JavaScript', 'React', 'Angular', 'Node.js', 'CSS', 'HTML', 'SQL', 'PostgreSQL', 'C#', 'C++', 'Test Driven Development'];
 
   return (
     <section>

@@ -2,10 +2,10 @@ import React from 'react';
 
 function Contact() {
   return (
-    <section>
+    <section id="contact">
       <h2>Contact Me</h2>
-      <p>Email: john.doe@example.com</p>
-      <p>LinkedIn: <a href="https://linkedin.com/in/yourprofile">Your LinkedIn</a></p>
+      <p>Email: mikb182@gmail.com</p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/mikael-bro">Mikael Bro</a></p>
     </section>
   );
 }
