@@ -1,5 +1,5 @@
 /* Site header container */
-.header {
+.site-header {
   display: flex;
   justify-content: space-between; /* Title on the left, login on the right */
   align-items: center;
