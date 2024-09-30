@@ -1,4 +1,17 @@
-import React, { useState } from 'react';
+import React from "react";
+import '../styles/Header.css';
+
+const Header= () => {
+  return (
+    <header className="header">
+      <h1>My Portfolio</h1>
+    </header>
+  )
+}
+
+export default Header;
+
+/* import React, { useState } from 'react';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
 import { register, login } from '../services/AuthService';
@@ -63,3 +76,4 @@ const Header = () => {
 };
 
 export default Header;
+ */

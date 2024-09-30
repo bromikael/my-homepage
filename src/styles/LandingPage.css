@@ -1,0 +1,42 @@
+/* Center the entire page content */
+.landing-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    background-color: #f5f5f5; /* Light background */
+  }
+  
+  .slider {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+  }
+  
+  /* Style the buttons for switching */
+  .slider-button {
+    width: 50%;
+    padding: 10px;
+    cursor: pointer;
+    background-color: #ddd;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .slider-button.active {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .slider-button:not(.active):hover {
+    background-color: #ccc;
+  }
+  
+  /* Form container styles */
+  .form-container {
+    margin-top: 20px;
+  }
+  
