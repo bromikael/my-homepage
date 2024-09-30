@@ -11,8 +11,9 @@ function LandingPage({ onLoginSuccess }) {
 
   const handleLogin = async (credentials) => {
     try {
-      const data = login(credentials.email, credentials.password);
-      setToken(data);
+      const data = await login(credentials.email, credentials.password);
+      console.log('Token created:', data.token);
+      setToken(data.token);
       setIsLoggedIn(true);
       setErrorMessage('');
       onLoginSuccess();
@@ -24,7 +25,8 @@ function LandingPage({ onLoginSuccess }) {
   const handleRegister = async (credentials) => {
     try {
       const data = await register(credentials.email, credentials.password);
-      setToken(data); 
+      console.log('Token :', data.token);
+      setToken(data.token); 
       setIsLoggedIn(true);
       setErrorMessage('');
       onLoginSuccess();

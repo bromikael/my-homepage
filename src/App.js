@@ -50,6 +50,7 @@ function App() {
   const handleSave = async (updatedData) => {
     try {
       const token = getToken();
+      console.log("Token being sent with request:", token);
       await saveCvData(token, updatedData);
       setCvData(updatedData); 
       setIsEditing(false); 

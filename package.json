@@ -7,7 +7,7 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "axios": "^1.7.7",
+    "axios": "^0.26.1",
     "firebase": "^10.13.1",
     "qrcode.react": "^4.0.1",
     "react": "^18.3.1",
@@ -45,7 +45,9 @@
     "@babel/core": "^7.25.2",
     "@babel/preset-env": "^7.25.4",
     "axios-mock-adapter": "^2.0.0",
+    "babel-jest": "^29.7.0",
     "gh-pages": "^6.1.1",
+    "jest": "^27.5.1",
     "jest-esm-transformer": "^1.0.0"
   }
 }
