@@ -18,7 +18,7 @@ function App() {
   const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
-    if (loading) {  // Only run if loading is true (i.e., initial fetch or reload)
+    if (loading) { 
       console.log('useEffect called - starting fetch');
       
       const token = getToken();
@@ -27,7 +27,7 @@ function App() {
       if (!token) {
         console.log('No token found, user is not logged in.');
         setIsLoggedIn(false);
-        setLoading(false); // Stop loading if no token is found
+        setLoading(false); 
         return;
       }
     
@@ -40,13 +40,13 @@ function App() {
           setIsLoggedIn(false);
           console.error('Error fetching CV data:', err);
         } finally {
-          setLoading(false); // Ensure loading is set to false
+          setLoading(false);
         }
       };
 
-      fetchData();  // Only call fetchData when loading is true
+      fetchData(); 
     }
-  }, [loading]);  // Depend on `loading` to prevent re-firing unnecessarily
+  }, [loading]);
 
   
   const handleLoginSuccess = () => {
