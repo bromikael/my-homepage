@@ -1,7 +1,7 @@
 import React from "react";
 import '../styles/Header.css';
 
-const Header= () => {
+const Header= ({ isLoggedIn}) => {
   return (
     <header className="header">
       <h1>My Portfolio</h1>

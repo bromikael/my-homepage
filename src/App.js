@@ -6,6 +6,7 @@ import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Qr from './components/Qr';
+import Logout from './components/LogoutForm'
 import { useEffect, useState } from 'react';
 import { fetchCvData, saveCvData, getToken } from './services/ApiService';
 
@@ -14,34 +15,39 @@ function App() {
   const [isEditing, setIsEditing] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loading, setLoading] = useState(true); 
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
-    console.log('useEffect called - starting fetch');
+    if (loading) {  // Only run if loading is true (i.e., initial fetch or reload)
+      console.log('useEffect called - starting fetch');
+      
+      const token = getToken();
+      console.log('Token retrieved:', token);
     
-    const token = getToken();
-    console.log('Token retrieved:', token);
-  
-    if (!token) {
-      console.log('No token found, user is not logged in.');
-      setIsLoggedIn(false);
-      setLoading(false);
-      return;
-    }
-  
-    const fetchData = async () => {
-      try {
-        const data = await fetchCvData(token);
-        setCvData(data);
-        setIsLoggedIn(true);
-      } catch (err) {
+      if (!token) {
+        console.log('No token found, user is not logged in.');
         setIsLoggedIn(false);
-      } finally {
-        setLoading(false); 
+        setLoading(false); // Stop loading if no token is found
+        return;
       }
-    };
-  
-    fetchData();
-  }, []); // Empty dependency array ensures this runs only once on mount
+    
+      const fetchData = async () => {
+        try {
+          const data = await fetchCvData(token);  // Fetch data with token
+          setCvData(data);
+          setIsLoggedIn(true);
+        } catch (err) {
+          setIsLoggedIn(false);
+          console.error('Error fetching CV data:', err);
+        } finally {
+          setLoading(false); // Ensure loading is set to false
+        }
+      };
+
+      fetchData();  // Only call fetchData when loading is true
+    }
+  }, [loading]);  // Depend on `loading` to prevent re-firing unnecessarily
+
   
   const handleLoginSuccess = () => {
     setIsLoggedIn(true);
@@ -50,13 +56,38 @@ function App() {
   const handleSave = async (updatedData) => {
     try {
       const token = getToken();
-      console.log("Token being sent with request:", token);
-      await saveCvData(token, updatedData);
-      setCvData(updatedData); 
+      console.log("Token being sent with request:", updatedData);
+      
+      const fullData = {
+        aboutMe: updatedData?.aboutMe || cvData.aboutMe,
+        skills: cvData?.skills,
+        projects: cvData?.projects
+      };
+
+      await saveCvData(token, fullData);
+      setCvData(fullData); 
       setIsEditing(false); 
     } catch (err) {
       console.error('Error saving CV data:', err);
     }
+  };
+
+  const handleLogout = () => {
+    try {
+      localStorage.removeItem('token');
+      setIsLoggedIn(false); 
+      setErrorMessage('');  
+    } catch (error) {
+      setErrorMessage('Logout failed. Please try again.');
+    }
+  };
+
+  const createUpdateData = (section, value) => {
+    return {
+      aboutMe: section === 'aboutMe' ? value : cvData?.aboutMe,
+      skills: section === 'skills' ? value : cvData?.skills,
+      projects: section === 'projects' ? value : cvData?.projects
+    };
   };
 
   return (
@@ -71,6 +102,7 @@ function App() {
         <>
           <About
             aboutMe={cvData?.aboutMe}
+            createUpdateData={createUpdateData}
             handleSave={handleSave}
           />
           <Skills 
@@ -86,6 +118,7 @@ function App() {
             handleSave={handleSave}
           />
           <Qr />
+          <Logout onLogout={handleLogout} errorMessage={errorMessage} />
         </>
       )}
     </div>

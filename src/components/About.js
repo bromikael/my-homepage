@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function About({ aboutMe, handleSave }) {
+function About({ aboutMe, createUpdateData, handleSave }) {
   const [isEditing, setIsEditing] = useState(false); // 
   const [editedAboutMe, setEditedAboutMe] = useState(aboutMe); 
 
@@ -9,7 +9,8 @@ function About({ aboutMe, handleSave }) {
   };
 
   const saveChanges = () => {
-    handleSave(editedAboutMe);
+    const updatedData = createUpdateData('aboutMe', editedAboutMe);
+    handleSave(updatedData);
     setIsEditing(false);
   };
 
