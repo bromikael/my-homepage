@@ -108,7 +108,7 @@ function App() {
           <Skills 
             skills={cvData?.skills}
             handleSave={handleSave}
-          />
+          />    
           <Projects 
             projects={cvData?.projects}
             handleSave={handleSave}
