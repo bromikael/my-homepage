@@ -26,6 +26,7 @@ describe('Auth API Tests', () => {
     const email = 'test@example.com';
     const password = 'wrong-password';
 
+    console.log(API_BASE_URL);
     mock.onPost(`${API_BASE_URL}/auth/login`).reply(401, { message: 'Invalid credentials' });
 
     await expect(login(email, password)).rejects.toThrow();
